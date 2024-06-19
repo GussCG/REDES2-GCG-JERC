@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    
+    background: rgb(255, 255, 255);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Montserrat';
+}
+
+#index-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 600px;
+    width: 900px;
+
+    padding: 20px;
+    border-radius: 50px;
+    background-color: rgba(224, 224, 224, 1);
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+form #busqueda {
+    width: 400px;
+    height: 30px;
+
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+
+    font-family: 'Montserrat';
+}
+
+form #btn-buscar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 30px;
+    padding: 20px;
+
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(207, 147, 141);
+    transition: opacity .28s ease-in-out;
+    font-family: 'Montserrat';
+    font-weight: bold;
+}
+
+form #btn-buscar:hover {
+    opacity: 0.8;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    width: 900px;
+    padding: 20px;
+    background-color: rgba(224, 224, 224, 1);
+    border-radius: 20px;
+}
+
+#header #header-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+#header #header-msg {
+    font-size: 12px;
+    color: rgb(0, 0, 0);
+    margin: 0;
+}
+
+#search-main .file{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    width: 900px;
+    height: 76px;
+    border: 1px solid rgb(148, 148, 148);
+    border-radius: 10px;
+    margin: 28px 0;
+    padding: 0 28px;
+}
+
+#search-main .file .file-info {
+    font-size: 14px;
+    color: rgb(0, 0, 0);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#search-main .file .file-icon {
+    transition: transform .28s ease-in-out;
+}
+
+#search-main .file .file-icon:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+#p-time {
+    font-size: 14px;
+    color: rgb(136, 136, 136);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+}
+
+#pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+
+    margin: 20px 0;
+}
+
+#pagination button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(181, 181, 181);
+    transition: opacity .28s ease-in-out;
+
+    font-family: 'Montserrat';
+    font-weight: 300;
+}
+
+#pagination button:hover {
+    opacity: 0.8;
+}

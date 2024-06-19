@@ -1,0 +1,13 @@
+1. Crear entorno virtual
+   python -m venv p2p_env
+
+2. Activar entorno virtual
+   p2p_env\Scripts\activate
+
+3. Instalar dependencias
+    pip install -r requirements.txt
+
+4. Ejecutar el servidor
+    python server.py
+
+5. Acceder a la dirección http://localhost:5000/ en el navegador

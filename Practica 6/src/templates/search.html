@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/estilo.css">
+    <title>Practica 6 - Busqueda</title>
+</head>
+<body>
+    <div id="header">
+        <div id="header-form">
+            <a href="/"><img src="../static/img/lupa.png" width="60px" height="60px"></a>
+            <form id="search-form">
+                <input type="text" name="busqueda" placeholder="Buscar" id="busqueda">
+                <button type="submit" id="btn-buscar">Buscar</button>
+            </form>
+        </div>
+        <div id="header-msg">
+        </div>
+    </div>
+
+    <main id="search-main">
+    </main>
+
+    <div id="pagination">
+        <button id="btn-previous">Anterior</button>
+        <p id="page-number">Página 1</p>
+        <button id="btn-next">Siguiente</button>
+    </div>
+    <script>
+        let currentPage = 1;
+        let currentQuery = '';
+
+        document.getElementById('search-form').addEventListener('submit', function(event){
+            event.preventDefault();
+            currentQuery = document.getElementById('busqueda').value;
+            // Cambiar la URL sin recargar la página
+            window.history.pushState({}, '', `./search?query=${currentQuery}`);
+            searchTorrents(currentQuery, currentPage);
+        });
+
+        document.getElementById('btn-previous').addEventListener('click', function(){
+            if(currentPage > 1){
+                currentPage--;
+                const pageNumber = document.getElementById('page-number');
+                pageNumber.innerText = `Página ${currentPage}`;
+                searchTorrents(currentQuery, currentPage);
+            }
+        });
+
+        document.getElementById('btn-next').addEventListener('click', function(){
+            currentPage++;
+            const pageNumber = document.getElementById('page-number');
+            pageNumber.innerText = `Página ${currentPage}`;
+            searchTorrents(currentQuery, currentPage);
+            //Si no hay resultados, regresar a la primera página
+            if (document.getElementById('search-main').innerHTML == ''){
+                currentPage==0;
+                pageNumber.innerText = `Página ${currentPage}`;
+            }
+        });
+
+        function searchTorrents(query, page){
+            fetch(`/search?query=${query}&page=${page}`)
+                .then(response => response.json())
+                .then(results => {
+                    displayResults(results);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function displayResults(results){
+            const resultsDiv = document.getElementById('search-main');
+            resultsDiv.innerHTML = '';
+            results.forEach(result => {
+                const resultDiv = document.createElement('div');
+                resultDiv.classList.add('file');
+                resultDiv.innerHTML = `
+                    <div class="file-info">
+                        <p>${result.name}</p>
+                        <p id="p-time"><b>Size</b>: ${toBytes(result.size)}</p>
+                    </div>
+                    <div class="file-icon">
+                        <a href="${result.magnet_url}">
+                            <img src="../static/img/archivo-icono.png" height="28px"/>
+                        </a>
+                    </div>
+                `;
+                resultsDiv.appendChild(resultDiv);
+            });
+        }
+
+        function toBytes(size){
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            if (size == 0) return '0 Byte';
+            const i = parseInt(Math.floor(Math.log(size) / Math.log(1024)));
+            return Math.round(size / Math.pow(1024, i), 2) + ' ' + sizes[i];
+        }
+
+        // Obtener la query de la URL y buscar
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('query');
+
+        if(query){
+            document.getElementById('busqueda').value = query;
+            currentQuery = query;
+            searchTorrents(query);
+        }
+
+    </script>
+</body>
+</html>

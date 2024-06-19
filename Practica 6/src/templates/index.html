@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/estilo.css">
+    <title>Practica 6</title>
+</head>
+<body>
+
+    <main id="index-main">
+        <img src="../static/img/lupa.png" width="400px" height="400px">
+        <form id="search-form">
+            <input type="text" name="busqueda" placeholder="Buscar" id="busqueda" required>
+            <button type="submit" id="btn-buscar">Buscar</button>
+        </form>
+    </main> 
+
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(event){
+            event.preventDefault();
+            const query = document.getElementById('busqueda').value;
+            window.location.href = `./results?query=${query}`;
+        })
+    </script>
+    
+</body>
+</html>
