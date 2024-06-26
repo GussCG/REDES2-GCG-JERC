@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./static/style.css">
+    <title>Practica 3</title>
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center;">Practica 3</h1>
+        <h2 style="text-align: center;">Servidor HTTP</h2>
+    </header>
+    <div class="img">
+        <img src="./static/EscudoESCOM.png" alt="Imagen">
+    </div>
+    <main class="contenedor">
+        <div class="principal">
+            <div class="formulario">
+                <form action="/submit-get" method="GET">
+                    <p>Nombre(s): <input type="text" name="nombre" value="José Emilio"></p>
+                    <p>Apellido paterno: <input type="text" name="apellidos" value="Ramírez"></p>
+                    <p>Apellido materno: <input type="text" name="apellidos" value="Carrillo"></p>
+                    <p>Boleta: <input type="text" name="boleta" value="2021630604"></p>
+                    <p>Grupo: <input type="text" name="grupo" value="6CV4"></p>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="reset" class="btn btn-danger">Borrar</button>
+                </form>
+            </div>
+            <div class="formulario">
+                <form action="/submit-post" method="POST">
+                    <p>Nombre(s): <input type="text" name="nombre" value="Gustavo"></p>
+                    <p>Apellido paterno: <input type="text" name="apellidos" value="Cerda"></p>
+                    <p>Apellido materno: <input type="text" name="apellidos" value="Garcia"></p>
+                    <p>Boleta: <input type="text" name="boleta" value="202163"></p>
+                    <p>Grupo: <input type="text" name="grupo" value="6CV4"></p>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="reset" class="btn btn-danger">Borrar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
